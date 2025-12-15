@@ -1,0 +1,28 @@
+[
+  {
+    "id": "q1",
+    "category": "Geografía",
+    "question": "¿Cuál es la capital de Ecuador?",
+    "options": ["Quito", "Guayaquil", "Cuenca", "Loja"],
+    "answer": "Quito"
+  },
+  {
+    "id": "q2",
+    "category": "Literatura",
+    "question": "¿Quién escribió 'Cien años de soledad'?",
+    "options": [
+      "Gabriel García Márquez",
+      "Mario Vargas Llosa",
+      "Jorge Luis Borges",
+      "Pablo Neruda"
+    ],
+    "answer": "Gabriel García Márquez"
+  },
+  {
+    "id": "q3",
+    "category": "Ciencia",
+    "question": "¿Cuál es el planeta más cercano al Sol?",
+    "options": ["Mercurio", "Venus", "Tierra", "Marte"],
+    "answer": "Mercurio"
+  }
+]
