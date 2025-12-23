@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BrainLogo from "../assets/Logo-BRAIN.svg";
+import BrandHeader from "../components/BrandHeader";
 
 export default function PlayerSetup() {
   const location = useLocation();
@@ -34,31 +35,18 @@ export default function PlayerSetup() {
         justifyContent: "center",
         padding: "40px 20px",
         gap: "50px",
-        fontFamily: "Arial, sans-serif",
+        gap: "50px",
       }}
     >
       {/* LOGO + TÍTULO WOND */}
-      <div style={{ display: "flex", alignItems: "center", gap: "0px" }}>
-        <img src={BrainLogo} alt="logo brain" width="140" />
-        <h1
-          style={{
-            fontFamily: "'Keania One', sans-serif",
-            fontSize: "70px",
-            color: "#FFFFFF",
-            margin: 0,
-            lineHeight: "70px",
-          }}
-        >
-          WOND
-        </h1>
-      </div>
+      <BrandHeader scale={0.9} />
 
       {/* TÍTULO DE CONFIGURACIÓN */}
       <h2
         style={{
           color: "#daa520",
+          fontSize: "2.8rem",
           fontSize: "2.2rem",
-          fontFamily: "Arial, sans-serif",
           margin: 0,
           textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
         }}
@@ -79,7 +67,7 @@ export default function PlayerSetup() {
       >
         {/* Jugador 1 */}
         <div style={cardStyle}>
-          <h3 style={{ color: "#90063a", margin: "0 0 20px 0", fontSize: "1.5rem" }}>
+          <h3 style={{ color: "#90063a", margin: "0 0 20px 0", fontSize: "2rem" }}>
             Jugador 1
           </h3>
           <input
@@ -95,7 +83,7 @@ export default function PlayerSetup() {
         {/* Jugador 2 - solo en modo multi */}
         {mode === "multi" && (
           <div style={cardStyle}>
-            <h3 style={{ color: "#90063a", margin: "0 0 20px 0", fontSize: "1.5rem" }}>
+            <h3 style={{ color: "#90063a", margin: "0 0 20px 0", fontSize: "2rem" }}>
               Jugador 2
             </h3>
             <input
@@ -123,8 +111,8 @@ const cardStyle = {
   height: "180px",
   backgroundColor: "#daa520",
   borderRadius: "15px",
-  boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-  padding: "20px",
+  boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
+  padding: "30px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -134,8 +122,8 @@ const cardStyle = {
 
 const inputStyle = {
   width: "90%",
-  padding: "14px 18px",
-  fontSize: "1.1rem",
+  padding: "16px 20px",
+  fontSize: "1.3rem",
   borderRadius: "12px",
   border: "none",
   textAlign: "center",
@@ -151,7 +139,6 @@ const startButtonStyle = {
   color: "#90063a",
   fontSize: "1.5rem",
   fontWeight: "bold",
-  fontFamily: "Arial, sans-serif",
   padding: "16px 50px",
   borderRadius: "15px",
   border: "none",

@@ -3,49 +3,37 @@ import { useNavigate, useLocation } from "react-router-dom";
 import QuestionCard from "../components/QuestionCard";
 import { getQuestions } from "../services/triviaService";
 import { isAnswerCorrect } from "../utils/nlp";
+import BrandHeader from "../components/BrandHeader";
 
 export default function Game() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Read configuration from navigation state
-  // Expected state: { mode: 'single'|'multi', players: { player1: "Name", player2: "Name" } }
   const mode = location.state?.mode || "single";
   const playersData = location.state?.players || { player1: "Jugador 1", player2: "Jugador 2" };
 
   const [questions, setQuestions] = useState([]);
-  const [index, setIndex] = useState(0); // Current question index
-
-  // Game state
-  // Single player: uses scores[0]
-  // Multi player: uses scores[0] and scores[1]
+  const [index, setIndex] = useState(0);
   const [scores, setScores] = useState([0, 0]);
-
-  // Turn management (0 for player1, 1 for player2)
   const [turn, setTurn] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60); // Timer state
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isPaused, setIsPaused] = useState(false);
-  const [helpUsed, setHelpUsed] = useState([false, false]); // Tracks usage for [player1, player2]
+  const [helpUsed, setHelpUsed] = useState([false, false]);
+
+  const timerEnabled = JSON.parse(localStorage.getItem("timerEnabled") ?? "true");
+  const helpEnabled = JSON.parse(localStorage.getItem("helpEnabled") ?? "false");
 
   const [disabled, setDisabled] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [correctId, setCorrectId] = useState(null);
 
-  // Initialize questions
   useEffect(() => {
-    // Determine how many questions based on mode? keeping simple 10 for now.
     const qs = getQuestions(10);
     setQuestions(qs);
   }, []);
 
-  // Timer Countdown Effect
   useEffect(() => {
-    if (!questions.length || disabled || isPaused) return;
-
-    // Reset timer on new question/turn is handled by effect dependnecies or manual reset?
-    // Actually best to reset when index or turn changes. 
-    // Let's us a separate effect to reset, or just reset in the "next question" logic.
-    // Here strictly countdown.
+    if (!questions.length || disabled || isPaused || !timerEnabled) return;
 
     if (timeLeft === 0) {
       handleTimeout();
@@ -57,54 +45,31 @@ export default function Game() {
     }, 1000);
 
     return () => clearInterval(timerId);
-  }, [timeLeft, disabled, questions.length, isPaused]);
+  }, [timeLeft, disabled, questions.length, isPaused, timerEnabled]);
 
-  // Reset timer when question or turn changes
   useEffect(() => {
     setTimeLeft(60);
-    setIsPaused(false); // Ensure timer runs when switching turns/questions
+    setIsPaused(false);
   }, [index, turn]);
-
 
   const handleHelp = () => {
     if (disabled || isPaused) return;
-
-    // Mark help as used for current player
     setHelpUsed((prev) => {
       const newUsed = [...prev];
       newUsed[turn] = true;
       return newUsed;
     });
-
     setIsPaused(true);
-
-    // Resume after 60 seconds (1 minute)
-    setTimeout(() => {
-      setIsPaused(false);
-    }, 60000);
+    setTimeout(() => setIsPaused(false), 60000);
   };
-
-
-  if (!questions.length) {
-    return (
-      <div style={{ padding: "40px", color: "white", textAlign: "center", fontFamily: "Arial" }}>
-        Cargando preguntas...
-      </div>
-    );
-  }
-
-  const cur = questions[index];
 
   const handleTimeout = () => {
     if (disabled) return;
-    setDisabled(true); // Lock inputs
+    setDisabled(true);
 
     if (mode === "single") {
-      // Single Player Timeout = Game Over
       finishGame();
     } else {
-      // Multi Player Timeout = Switch Turn (no points)
-      // Show "Time's up" message? For now just switch.
       setTimeout(() => {
         setDisabled(false);
         if (index + 1 >= questions.length) {
@@ -117,21 +82,17 @@ export default function Game() {
     }
   };
 
-  // Logic to handle answer selection
   const handleAnswer = (optionText, optId) => {
     if (disabled) return;
     setDisabled(true);
     setSelectedId(optId);
 
-    const correct = isAnswerCorrect(optionText, cur.answer, 0.7);
-
-    // Find correct option index for highlighting
-    const correctIndex = cur.options.findIndex((o) => o === cur.answer);
-    const correctOptionId = `${cur.id}-opt-${correctIndex}`;
+    const correct = isAnswerCorrect(optionText, questions[index].answer, 0.7);
+    const correctIndex = questions[index].options.findIndex((o) => o === questions[index].answer);
+    const correctOptionId = `${questions[index].id}-opt-${correctIndex}`;
     setCorrectId(correctOptionId);
 
     if (correct) {
-      // Update score for the current player 'turn'
       setScores((prev) => {
         const newScores = [...prev];
         newScores[turn] += 10;
@@ -139,9 +100,7 @@ export default function Game() {
       });
     }
 
-    // Delay before next step
     setTimeout(() => {
-      // Logic for Single Player Sudden Death
       if (mode === "single" && !correct) {
         finishGame();
         return;
@@ -151,338 +110,104 @@ export default function Game() {
       setCorrectId(null);
       setDisabled(false);
 
-      const isLastQuestion = index + 1 >= questions.length;
-
-      if (isLastQuestion) {
-        // Game Over
+      if (index + 1 >= questions.length) {
         finishGame();
       } else {
-        // Next Question
         setIndex((i) => i + 1);
-
-        // Switch turn if multiplayer
-        if (mode === "multi") {
-          setTurn((prev) => (prev === 0 ? 1 : 0));
-        }
+        if (mode === "multi") setTurn((prev) => (prev === 0 ? 1 : 0));
       }
     }, 1500);
   };
 
   const finishGame = () => {
-    const scoresPayload = [];
-    if (mode === "single") {
-      scoresPayload.push({ name: playersData.player1, score: scores[0] });
-    } else {
-      scoresPayload.push({ name: playersData.player1, score: scores[0] });
-      scoresPayload.push({ name: playersData.player2, score: scores[1] });
-    }
+    const scoresPayload = mode === "single"
+      ? [{ name: playersData.player1, score: scores[0] }]
+      : [{ name: playersData.player1, score: scores[0] }, { name: playersData.player2, score: scores[1] }];
     navigate("/results", { state: { mode, scores: scoresPayload } });
   };
 
-  // --- RENDERING HELPERS ---
+  if (!questions.length) return <div style={{ color: "white", textAlign: "center", padding: "50px" }}>Cargando...</div>;
 
-  // Header Component for a Player
-  const PlayerHeader = ({ name, score, isActive, align = "left", showTimer, onHelp, canUseHelp }) => (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "10px 0",
-        marginBottom: "20px",
-        opacity: isActive ? 1 : 0.6,
-      }}
-    >
-      <div>
-        <div style={{ fontSize: "0.9rem", color: isActive ? "#555" : "#888" }}>The Player</div>
-        <div style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#333" }}>{name}</div>
-      </div>
+  const currentPlayerName = turn === 0 ? playersData.player1 : playersData.player2;
+  const currentScore = scores[turn];
 
-      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        {/* TIMER DISPLAY */}
-        {isActive && showTimer && (
-          <div style={{
-            backgroundColor: timeLeft <= 10 ? "#f44336" : "#2196f3",
-            color: "white",
-            padding: "5px 10px",
-            borderRadius: "15px",
-            fontWeight: "bold"
-          }}>
-            ⏱ {timeLeft}s
-          </div>
-        )}
-
-        {/* Help Button */}
-        {isActive && showTimer && canUseHelp && (
-          <button
-            onClick={onHelp}
-            title="Ayuda: Pausar 1 min"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              color: "#2196f3",
-              display: "flex",
-              alignItems: "center",
-              fontSize: "1.2rem",
-              padding: "5px",
-            }}
-          >
-            <svg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1em' viewBox='0 0 640 512'>
-              {/* Icon from Font Awesome 6 Regular by Dave Gandy - https://creativecommons.org/licenses/by/4.0/ */}
-              <path fill='currentColor' d='m272.2 64.6l-51.1 51.1c-15.3 4.2-29.5 11.9-41.5 22.5L153 161.9c-10.2 9.1-23.5 14.1-37.2 14.1H96v128c20.4.6 39.8 8.9 54.3 23.4l35.6 35.6l7 7l27 27c6.2 6.2 16.4 6.2 22.6 0c1.7-1.7 3-3.7 3.7-5.8c2.8-7.7 9.3-13.5 17.3-15.3s16.4.6 22.2 6.5l10.8 10.6c11.6 11.6 30.4 11.6 41.9 0c5.4-5.4 8.3-12.3 8.6-19.4c.4-8.8 5.6-16.6 13.6-20.4s17.3-3 24.4 2.1c9.4 6.7 22.5 5.8 30.9-2.6c9.4-9.4 9.4-24.6 0-33.9L340.1 243l-35.8 33c-27.3 25.2-69.2 25.6-97 .9c-31.7-28.2-32.4-77.4-1.6-106.5l70.1-66.2C303.2 78.4 339.4 64 377.1 64c36.1 0 71 13.3 97.9 37.2l30.1 26.8H624c8.8 0 16 7.2 16 16v208c0 17.7-14.3 32-32 32h-32c-11.8 0-22.2-6.4-27.7-16h-84.9c-3.4 6.7-7.9 13.1-13.5 18.7c-17.1 17.1-40.8 23.8-63 20.1c-3.6 7.3-8.5 14.1-14.6 20.2c-27.3 27.3-70 30-100.4 8.1c-25.1 20.8-62.5 19.5-86-4.1L159 404l-7-7l-35.6-35.6c-5.5-5.5-12.7-8.7-20.4-9.3c0 17.6-14.4 31.9-32 31.9H32c-17.7 0-32-14.3-32-32V144c0-8.8 7.2-16 16-16h99.8c2 0 3.9-.7 5.3-2l26.5-23.6C175.5 77.7 211.4 64 248.7 64H259c4.4 0 8.9.2 13.2.6M544 320V176h-48c-5.9 0-11.6-2.2-15.9-6.1l-36.9-32.8C425 120.9 401.5 112 377.1 112c-25.4 0-49.8 9.7-68.3 27.1l-70.1 66.2c-10.3 9.8-10.1 26.3.5 35.7c9.3 8.3 23.4 8.1 32.5-.3l71.9-66.4c9.7-9 24.9-8.4 33.9 1.4s8.4 24.9-1.4 33.9l-.8.8l74.4 74.4c10 10 16.5 22.3 19.4 35.1h74.8zM64 336a16 16 0 1 0-32 0a16 16 0 1 0 32 0m528 16a16 16 0 1 0 0-32a16 16 0 1 0 0 32' />
-            </svg>
-          </button>
-        )}
-
-        <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "#d2920d", fontWeight: "bold", fontSize: "1.2rem" }}>
-          <span>🏆</span>
-          <span>{score}</span>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Layout for Single Player matches Image 1
-  if (mode === "single") {
-    return (
-      <div style={containerStyle}>
-        {/* Main Card Area */}
-        <div style={singleCardWrapperStyle}>
-          {/* Header Area inside the wrapper? No, image showing it inside the white/pink rounded container maybe?
-             Let's look at image 1:
-             Top white area has "Jugador" "Evelyn Valverde" and Trophy.
-             This looks like the header is part of the card container or separate?
-             Actually it looks like one big rounded container with a header part and a question part.
-          */}
-
-          <div style={innerCardStyle}>
-            {/* Header */}
-            <PlayerHeader
-              name={playersData.player1}
-              score={scores[0]}
-              isActive={true}
-              showTimer={true}
-              onHelp={handleHelp}
-              canUseHelp={!helpUsed[0]} // Single player is always index 0
-            />
-
-            {/* Question Card Content */}
-            {/* Since we refactored QuestionCard to include its own container, we should maybe render it directly.
-                 However QuestionCard has a white background.
-                 The image shows the header and question in one unified white card?
-                 No, looks like a light pink/white large container.
-                 Inside it, a section for header. Then a section for Question.
-             */}
-
-            <QuestionCard
-              questionObj={cur}
-              onAnswer={handleAnswer}
-              disabled={disabled}
-              selectedId={selectedId}
-              correctId={correctId}
-            />
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div style={footerStyle}>
-          <div style={footerTextStyle}>Pregunta {index + 1}</div>
-          <div style={footerTextStyle}>Puntos: {scores[0]}</div>
-        </div>
-      </div>
-    );
-  }
-
-  // Layout for Multi Player matches Image 2
-  // Two distinct columns. Left = Player 1 (Gold bg), Right = Player 2 (Pink/Maroon bg).
   return (
-    <div style={{ ...containerStyle, flexDirection: "row", padding: 0 }}>
-
-      {/* LEFT COLUMN - PLAYER 1 */}
-      {/* Image 2 shows left side is yellow/gold background if active? 
-          Actually Image 2:
-          Left side: Gold background. Inside: Header + Question Card (White).
-          Right side: Maroon background. Inside: Header + "Esperando turno...".
-          
-          Wait, is background dynamic? 
-          "la primera imagen es para cundo se selecione un jugador, y la sigueinte es para 2 jugadores"
-          
-          If Player 1 is active (Left): Left is Gold, Right is Maroon.
-          If Player 2 is active (Right): Left is Maroon? Right is Gold? 
-          Or maybe fixed colors?
-          Image 2 shows Player 1 is Gold. Player 1 Name is Evelyn.
-          
-          Let's assume fixed colors for P1 and P2 columns to match the "Design" of 2 columns.
-          But the active player gets the Question Card visible.
-      */}
-
-      {/* Player 1 Region */}
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: "#daa520", // Gold
-          display: "flex",
-          flexDirection: "column",
-          padding: "20px",
-          position: "relative",
-          transition: "all 0.3s"
-        }}
-      >
-        {/* Header P1 */}
-        {/* Note: The header in Image 2 is in a semi-transparent white box? 
-            Top left: "Jugador 1" "Evelyn". 
-            It looks like a card header.
-        */}
-        <div style={multiHeaderStyle}>
-          <PlayerHeader
-            name={playersData.player1}
-            score={scores[0]}
-            isActive={true}
-            showTimer={turn === 0}
-            onHelp={handleHelp}
-            canUseHelp={!helpUsed[0] && turn === 0}
-          />
-        </div>
-
-        {/* Content P1 */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          {turn === 0 ? (
-            <QuestionCard
-              questionObj={cur}
-              onAnswer={handleAnswer}
-              disabled={disabled}
-              selectedId={selectedId}
-              correctId={correctId}
-            />
-          ) : (
-            <div style={waitingStyle}>Esperando turno...</div>
-          )}
-        </div>
+    <div style={containerStyle}>
+      {/* Top Header */}
+      <div style={{ marginTop: "20px" }}>
+        <BrandHeader scale={0.8} />
       </div>
 
-      {/* Player 2 Region */}
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: "#90063a", // Updated to requested burgundy
-          display: "flex",
-          flexDirection: "column",
-          padding: "20px",
-          position: "relative",
-          transition: "all 0.3s",
-          boxSizing: "border-box", // Ensure padding doesn't cause overflow
-          overflow: "hidden" // Prevent child elements from spilling out
-        }}
-      >
-        {/* Header P2 */}
-        <div style={{ ...multiHeaderStyle, backgroundColor: "#ffffff" }}>
-          <PlayerHeader
-            name={playersData.player2}
-            score={scores[1]}
-            isActive={true}
-            showTimer={turn === 1}
-            onHelp={handleHelp}
-            canUseHelp={!helpUsed[1] && turn === 1}
-          />
+      {/* Timer Badge */}
+      {timerEnabled && (
+        <div style={timerBadgeStyle}>
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.05881 16.6229C5.87899 10.0457 11.4898 4.9562 18.2892 4.9562C25.6532 4.9562 31.6229 10.9257 31.6229 18.2895C31.6229 25.6534 25.6532 31.6229 18.2892 31.6229H9.95638M18.2899 18.2895V11.6229M14.9565 1.62286H21.6233M1.62286 21.6229H9.95638M4.95627 26.6229H13.2898" stroke="white" strokeWidth="3.24571" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span style={{ fontSize: "1.8rem", color: "white", fontFamily: "'Koulen', sans-serif" }}>{timeLeft} S</span>
         </div>
+      )}
 
-        {/* Content P2 */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          {turn === 1 ? (
-            <QuestionCard
-              questionObj={cur}
-              onAnswer={handleAnswer}
-              disabled={disabled}
-              selectedId={selectedId}
-              correctId={correctId}
-            />
-          ) : (
-            <div style={waitingStyle}>Esperando turno...</div>
-          )}
+      {/* Help Button (Phone) */}
+      {helpEnabled && (
+        <div
+          onClick={handleHelp}
+          style={{
+            position: "absolute",
+            top: "40px",
+            right: "40px",
+            cursor: "pointer",
+            backgroundColor: "rgba(0,0,0,0.4)",
+            padding: "20px",
+            borderRadius: "15px",
+            opacity: helpUsed[turn] ? 0.3 : 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            boxShadow: "0 6px 0 rgba(0,0,0,0.2)"
+          }}
+        >
+          <svg width="60" height="60" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M34.8785 32.0774L33.6133 33.4092C33.6133 33.4092 30.606 36.5753 22.3977 27.9333C14.1894 19.2915 17.1966 16.1255 17.1966 16.1255L17.9933 15.2867C19.9561 13.2204 20.1411 9.90294 18.4286 7.48108L14.9259 2.52695C12.8066 -0.470591 8.71123 -0.866562 6.28204 1.69092L1.92204 6.28119C0.717544 7.54931 -0.0896219 9.19317 0.00826691 11.0168C0.258683 15.6821 2.25221 25.72 13.3762 37.4315C25.1727 49.851 36.2413 50.3445 40.7677 49.8977C42.1994 49.7565 43.4444 48.9845 44.4477 47.928L48.3938 43.7739C51.0574 40.9695 50.3063 36.1618 46.8983 34.2003L41.5913 31.1456C39.3535 29.8577 36.6274 30.2359 34.8785 32.0774Z" fill="#028B02" stroke="white" strokeWidth="0.000507937" />
+          </svg>
         </div>
-      </div>
+      )}
 
-      {/* Footer Overlay ? */}
-      <div style={fixedFooterStyle}>
-        <div style={footerTextStyle}>Pregunta {index + 1}</div>
-        <div style={footerTextStyle}>Jugadores activos: 2</div>
+      {/* Question Card Container */}
+      <div style={{ flex: 1, display: "flex", alignItems: "center", width: "100%", padding: "50px", maxWidth: "1200px" }}>
+        <QuestionCard
+          questionObj={questions[index]}
+          onAnswer={handleAnswer}
+          disabled={disabled}
+          selectedId={selectedId}
+          correctId={correctId}
+          playerName={currentPlayerName}
+          score={currentScore}
+        />
       </div>
-
     </div>
   );
 }
 
-// --- STYLES ---
-
 const containerStyle = {
   width: "100%",
   minHeight: "100vh",
-  backgroundColor: "#90063a", // Burgundy
+  backgroundColor: "#90063a",
   display: "flex",
   flexDirection: "column",
-  fontFamily: "Arial, sans-serif",
+  alignItems: "center",
   position: "relative",
+  overflow: "hidden"
 };
 
-const singleCardWrapperStyle = {
-  flex: 1,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "20px",
-};
-
-const innerCardStyle = {
-  backgroundColor: "#fce4ec", // Light pink/white
-  borderRadius: "20px",
-  padding: "20px",
-  width: "100%",
-  maxWidth: "600px",
-  boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
-};
-
-const footerStyle = {
-  backgroundColor: "#fce4ec",
-  padding: "15px 30px",
-  margin: "0 20px 20px 20px",
+const timerBadgeStyle = {
+  backgroundColor: "#edb400",
+  padding: "10px 40px",
   borderRadius: "15px",
   display: "flex",
-  justifyContent: "space-between",
   alignItems: "center",
-};
-
-const fixedFooterStyle = {
-  position: "absolute",
-  bottom: "20px",
-  left: "20px",
-  right: "20px",
-  backgroundColor: "#fce4ec",
-  padding: "15px 30px",
-  borderRadius: "15px",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  zIndex: 10,
-};
-
-const footerTextStyle = {
-  color: "#555",
-  fontSize: "1rem",
-  fontWeight: "500",
-};
-
-const multiHeaderStyle = {
-  backgroundColor: "rgba(255,255,255,0.9)",
-  borderRadius: "12px",
-  padding: "10px 20px",
-  marginBottom: "20px",
-};
-
-const waitingStyle = {
-  color: "rgba(255,255,255,0.5)",
-  fontSize: "1.5rem",
-  textAlign: "center",
-  marginTop: "40px",
-  fontWeight: "bold",
+  gap: "15px",
+  marginTop: "10px",
+  border: "3px solid black",
+  boxShadow: "0 6px 0 rgba(0,0,0,0.2)"
 };

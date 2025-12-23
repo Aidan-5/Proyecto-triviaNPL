@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import BrandHeader from "../components/BrandHeader";
 
 export default function Results() {
   const location = useLocation();
@@ -19,10 +20,13 @@ export default function Results() {
         alignItems: "center",
         justifyContent: "center",
         padding: "20px",
-        fontFamily: "Arial, sans-serif",
       }}
     >
-      <h1 style={{ color: "white", fontSize: "3rem", marginBottom: "40px", fontFamily: "'Keania One', sans-serif" }}>
+      <div style={{ marginBottom: "20px" }}>
+        <BrandHeader scale={0.8} />
+      </div>
+
+      <h1 style={{ color: "white", fontSize: "3rem", marginBottom: "40px" }}>
         Resultados
       </h1>
 
@@ -37,7 +41,7 @@ export default function Results() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              boxShadow: "0 8px 16px rgba(0,0,0,0.3)",
               border: i === 0 ? "4px solid #daa520" : "none", // Highlight winner with gold border
             }}
           >
@@ -45,13 +49,13 @@ export default function Results() {
               <div style={{ fontSize: "1.2rem", color: "#555" }}>
                 {i === 0 ? "🏆 Ganador" : "Jugador"}
               </div>
-              <div style={{ fontSize: "1.8rem", fontWeight: "bold", color: "#333" }}>
+              <div style={{ fontSize: "2.2rem", fontWeight: "bold", color: "#333" }}>
                 {s.name}
               </div>
             </div>
             <div
               style={{
-                fontSize: "2rem",
+                fontSize: "2.5rem",
                 fontWeight: "bold",
                 color: "#90063a",
               }}
@@ -80,7 +84,6 @@ const buttonStyle = {
   color: "#90063a",
   fontSize: "1.2rem",
   fontWeight: "bold",
-  fontFamily: "Arial, sans-serif",
   padding: "15px 40px",
   borderRadius: "12px",
   border: "none",

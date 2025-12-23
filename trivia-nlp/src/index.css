@@ -1,5 +1,5 @@
 :root {
-  font-family: Arial, sans-serif;
+  font-family: 'Koulen', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -10,7 +10,15 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-smoothing: grayscale;
+}
+
+* {
+  font-family: 'Koulen', sans-serif !important;
+}
+
+.brand-title {
+  font-family: 'Keania One', sans-serif !important;
 }
 
 a {

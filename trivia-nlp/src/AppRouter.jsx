@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import Game from "./pages/Game";
 import Results from "./pages/Results";
 import PlayerSetup from "./components/PlayerSetup";
+import ConfigPanel from "./components/ConfigPanel";
+import PuntajePanel from "./components/PuntajePanel";
+
 
 export default function AppRouter() {
   return (
@@ -18,6 +21,12 @@ export default function AppRouter() {
 
         {/* Resultados */}
         <Route path="/results" element={<Results />} />
+
+        {/* Panel de Configuración */}
+        <Route path="/config" element={<ConfigPanel />} />
+
+        {/* Panel de Puntajes */}
+        <Route path="/scores" element={<PuntajePanel />} />
       </Routes>
     </BrowserRouter>
   );

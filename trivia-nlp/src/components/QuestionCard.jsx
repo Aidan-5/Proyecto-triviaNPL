@@ -1,67 +1,87 @@
 import React from "react";
 import AnswerButton from "./AnswerButton";
 
-export default function QuestionCard({ questionObj, onAnswer, disabled, selectedId, correctId }) {
+export default function QuestionCard({
+  questionObj,
+  onAnswer,
+  disabled,
+  selectedId,
+  correctId,
+  playerName = "JUGADOR",
+  score = 0
+}) {
+  const optionColors = ["#90063a", "#edb400", "#daa520", "#90063A"];
+
   return (
     <div
       style={{
-        backgroundColor: "#ffffff", // Fondo casi blanco/rosaceo como la imagen? La imagen 2 muestra blanco dentro de la card.
-        borderRadius: "16px",
-        padding: "30px",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        backgroundColor: "#d18d1f",
+        borderRadius: "25px",
         width: "100%",
-        maxWidth: "800px",
+        maxWidth: "950px",
         margin: "0 auto",
-        boxSizing: "border-box", // Important for preventing overflow
+        boxSizing: "border-box",
+        border: "3px solid black",
+        overflow: "hidden",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
       }}
     >
-      {/* Category Pill */}
-      <div
-        style={{
-          display: "inline-block",
-          padding: "4px 12px",
-          backgroundColor: "#f0f4f8",
-          color: "#555",
-          borderRadius: "8px",
-          fontSize: "0.85rem",
-          marginBottom: "20px",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
-        {questionObj.category || "General"}
+      {/* Header Strip inside the card */}
+      <div style={{
+        backgroundColor: "rgba(0,0,0,0.3)",
+        padding: "15px 30px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderBottom: "2px solid rgba(255,255,255,0.1)"
+      }}>
+        <span style={{ color: "white", fontSize: "1.4rem", fontFamily: "'Koulen', sans-serif" }}>
+          [ {playerName.toUpperCase()} ]
+        </span>
+        <span style={{ color: "white", fontSize: "1.4rem", fontFamily: "'Koulen', sans-serif" }}>
+          $ {score}
+        </span>
       </div>
 
-      {/* Question Text */}
-      <h2
-        style={{
-          fontFamily: "Arial, sans-serif",
-          fontSize: "1.4rem",
-          color: "#333",
-          marginBottom: "30px",
-          lineHeight: "1.4",
-        }}
-      >
-        {questionObj.question}
-      </h2>
+      <div style={{ padding: "40px 60px" }}>
+        {/* Question Text */}
+        <h2
+          style={{
+            fontSize: "2.8rem",
+            color: "#fff",
+            marginBottom: "60px",
+            textAlign: "center",
+            fontFamily: "'Koulen', sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "2px",
+            textShadow: "2px 2px 4px rgba(0,0,0,0.3)"
+          }}
+        >
+          ¿ {questionObj.question.toUpperCase()} ?
+        </h2>
 
-      {/* Options Stack */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        {questionObj.options.map((opt, i) => {
-          const id = `${questionObj.id}-opt-${i}`;
-          const isSelected = selectedId === id;
-          const isCorrect = correctId === id;
-          return (
-            <AnswerButton
-              key={id}
-              id={id}
-              text={opt}
-              onClick={() => onAnswer(opt, id)}
-              disabled={disabled}
-              isSelected={isSelected}
-              isCorrect={isCorrect}
-            />
-          );
-        })}
+        {/* Options Grid 2x2 */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "30px"
+        }}>
+          {questionObj.options.map((opt, i) => {
+            const id = `${questionObj.id}-opt-${i}`;
+            return (
+              <AnswerButton
+                key={id}
+                id={id}
+                text={opt}
+                baseColor={optionColors[i % 4]}
+                onClick={() => onAnswer(opt, id)}
+                disabled={disabled}
+                isSelected={selectedId === id}
+                isCorrect={correctId === id}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
