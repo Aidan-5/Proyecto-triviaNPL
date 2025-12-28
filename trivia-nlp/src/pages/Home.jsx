@@ -48,7 +48,6 @@ export default function Home() {
 
       {/* FOOTER CON BOTONES DE NAVEGACIÓN */}
       <div style={footerStyle}>
-        <div style={dotDecoration}>••</div>
         <div style={footerButtons}>
           {/* Botón de Ranking (Copa) */}
           <button style={circleBtn} onClick={() => navigate("/leaderboard-page")}>
