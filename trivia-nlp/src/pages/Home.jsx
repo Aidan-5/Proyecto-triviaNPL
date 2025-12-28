@@ -1,112 +1,205 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import BrainLogo from "../assets/Logo-BRAIN.svg";
+// Si no tienes el logo, puedes usar el emoji de cerebro como placeholder
+// import BrainLogo from "../assets/Logo-BRAIN.svg";
 
 export default function Home() {
   const navigate = useNavigate();
 
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        width: "100vw",
-        overflow: "hidden",
-        backgroundColor: "#90063a",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "40px",
-      }}
-    >
-      {/* LOGO + TEXTO WOND */}
-      <div style={{ display: "flex", alignItems: "center", gap: "0px" }}>
-        <img src={BrainLogo} alt="logo brain" width="180" />
+  const handleSelectMode = (mode) => {
+    // Enviamos el modo a SetupPlayers para que pida 1 o 2 nombres
+    navigate("/setup", { state: { mode } });
+  };
 
-        {/* === TEXTO WOND CON TIPOGRAFÍA KEANIA ONE === */}
-        <h1
-          style={{
-            fontFamily: "'Keania One', sans-serif",
-            fontSize: "80px",
-            color: "#FFFFFF",
-            margin: 0,
-            lineHeight: "80px",
-          }}
-        >
-          WOND
-        </h1>
+  return (
+    <div style={containerStyle}>
+      {/* SECCIÓN DEL LOGO Y TÍTULO */}
+      <div style={headerStyle}>
+        <div style={logoWrapper}>
+          <span style={{ fontSize: "100px" }}>🧠</span>
+        </div>
+        <h1 style={mainTitleStyle}>WOND</h1>
       </div>
 
-      {/* CONTENEDOR DE MODOS */}
-      <div
-        style={{
-          display: "flex",
-          gap: "40px",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {/* === 1 JUGADOR === */}
-        <div
-          style={{ ...cardStyle, cursor: "pointer" }}
-          onClick={() => navigate("/setup", { state: { mode: "single" } })}
-        >
-          <div style={iconBox}>
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 21 21'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' d='M10.5 2.5a3 3 0 0 1 3 3v2a3 3 0 1 1-6 0v-2a3 3 0 0 1 3-3m7 14v-.728c0-3.187-3.686-5.272-7-5.272s-7 2.085-7 5.272v.728a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1'/%3E%3C/svg%3E"
-              alt="single player icon"
-              width="45"
-            />
-          </div>
+      {/* INDICADOR CENTRAL */}
+      <div style={indicatorWrapper}>
+        <div style={selectionIndicator}>SELECCIONA TU DESAFÍO</div>
+      </div>
 
-          <h2 style={{ color: "#90063a", marginTop: "10px" }}>1 Jugador</h2>
-          <p style={{ textAlign: "center", padding: "0 12px" }}>
-            Modo individual. Responde hasta fallar.
-          </p>
+      {/* CONTENEDOR DE MODOS DE JUEGO */}
+      <div style={cardsContainer}>
+        {/* MODO 1 JUGADOR */}
+        <div style={cardStyle} onClick={() => handleSelectMode("single")}>
+          <div style={iconLarge}>👤</div>
+          <h2 style={cardTitle}>1 JUGADOR</h2>
+          <p style={cardDesc}>MODO INDIVIDUAL. RESPONDE HASTA FALLAR.</p>
+          {/* Decoración de fondo */}
+          <div style={bgIconLeft}>👤</div>
         </div>
 
-        {/* === 2 JUGADORES === */}
-        <div
-          style={{ ...cardStyle, cursor: "pointer" }}
-          onClick={() => navigate("/setup", { state: { mode: "multi" } })}
-        >
-          <div style={iconBox}>
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 21 21'%3E%3Cg fill='none' fill-rule='evenodd' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.5 2.5a3 3 0 0 1 3 3v2a3 3 0 1 1-6 0v-2a3 3 0 0 1 3-3m7 14v-.728c0-3.187-3.686-5.272-7-5.272s-7 2.085-7 5.272v.728a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1'/%3E%3Cpath fill='currentColor' d='M12.52 2.678A3 3 0 0 1 14.5 5.5v1c0 1.297-.848 2.581-2 3q1.01-1.379 1.01-3.5c0-2.122-.331-2.523-.99-3.322M17.5 17.5h1a1 1 0 0 0 1-1v-.728c0-2.17-1.71-3.83-3.847-4.667c0 0 2.847 2.395 1.847 6.395'/%3E%3C/g%3E%3C/svg%3E"
-              alt="users"
-              width="45"
-            />
-          </div>
+        {/* MODO 2 JUGADORES */}
+        <div style={cardStyle} onClick={() => handleSelectMode("multi")}>
+          <div style={iconLarge}>👥</div>
+          <h2 style={cardTitle}>2 JUGADORES</h2>
+          <p style={cardDesc}>MODO POR TURNOS (DUELO).</p>
+          <div style={bgIconLeft}>👥</div>
+        </div>
+      </div>
 
-          <h2 style={{ color: "#90063a", marginTop: "10px" }}>2 Jugadores</h2>
-          <p style={{ textAlign: "center", padding: "0 12px" }}>
-            Modo por turnos. Eliminación individual.
-          </p>
+      {/* FOOTER CON BOTONES DE NAVEGACIÓN */}
+      <div style={footerStyle}>
+        <div style={dotDecoration}>••</div>
+        <div style={footerButtons}>
+          {/* Botón de Ranking (Copa) */}
+          <button style={circleBtn} onClick={() => navigate("/leaderboard-page")}>
+            🏆
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-/* === ESTILOS === */
-const cardStyle = {
-  width: "320px",
-  height: "180px",
-  backgroundColor: "#daa520",
-  borderRadius: "15px",
-  boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-  padding: "20px",
+// --- SISTEMA DE ESTILOS (Fiel a tu diseño) ---
+
+const containerStyle = {
+  minHeight: "100vh",
+  width: "100vw",
+  backgroundColor: "#90063a", // Borgoña oscuro
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   alignItems: "center",
-  transition: "transform 0.2s",
+  justifyContent: "center",
+  padding: "20px",
+  boxSizing: "border-box",
+  overflowX: "hidden"
 };
 
-const iconBox = {
+const headerStyle = {
+  display: "flex",
+  alignItems: "center",
+  gap: "20px",
+  marginBottom: "30px"
+};
+
+const logoWrapper = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+};
+
+const mainTitleStyle = {
+  fontFamily: "'Keania One', sans-serif",
+  fontSize: "110px",
+  color: "#FFFFFF",
+  margin: 0,
+  letterSpacing: "5px"
+};
+
+const indicatorWrapper = {
+  marginBottom: "50px"
+};
+
+const selectionIndicator = {
+  backgroundColor: "rgba(0, 0, 0, 0.3)",
+  color: "white",
+  padding: "10px 40px",
+  borderRadius: "50px",
+  fontSize: "1.2rem",
+  fontWeight: "bold",
+  fontFamily: "sans-serif",
+  letterSpacing: "1px"
+};
+
+const cardsContainer = {
+  display: "flex",
+  gap: "40px",
+  flexWrap: "wrap",
+  justifyContent: "center"
+};
+
+const cardStyle = {
+  width: "360px",
+  height: "210px",
+  backgroundColor: "#daa520", // Amarillo/Dorado
+  borderRadius: "35px",
+  position: "relative",
+  overflow: "hidden",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+  transition: "transform 0.2s ease",
+  border: "2px solid rgba(0,0,0,0.1)",
+  boxShadow: "0 10px 20px rgba(0,0,0,0.2)"
+};
+
+const iconLarge = {
+  fontSize: "3.5rem",
+  color: "#90063a",
+  marginBottom: "5px",
+  zIndex: 2
+};
+
+const cardTitle = {
+  fontFamily: "'Keania One', sans-serif",
+  fontSize: "1.8rem",
+  color: "#90063a",
+  margin: 0,
+  zIndex: 2
+};
+
+const cardDesc = {
+  fontSize: "0.8rem",
+  fontWeight: "bold",
+  color: "#90063a",
+  textAlign: "center",
+  maxWidth: "80%",
+  zIndex: 2
+};
+
+const bgIconLeft = {
+  position: "absolute",
+  bottom: "-15px",
+  left: "-15px",
+  fontSize: "6rem",
+  opacity: 0.1,
+  transform: "rotate(15deg)",
+  zIndex: 1
+};
+
+const footerStyle = {
+  marginTop: "60px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "15px"
+};
+
+const dotDecoration = {
+  color: "white",
+  fontSize: "1.5rem",
+  letterSpacing: "10px",
+  opacity: 0.8
+};
+
+const footerButtons = {
+  display: "flex",
+  gap: "25px"
+};
+
+const circleBtn = {
   width: "60px",
   height: "60px",
+  backgroundColor: "white",
+  borderRadius: "50%",
   display: "flex",
-  justifyContent: "center",
   alignItems: "center",
+  justifyContent: "center",
+  fontSize: "1.6rem",
+  cursor: "pointer",
+  border: "none",
+  boxShadow: "0 5px 15px rgba(0,0,0,0.3)",
+  transition: "transform 0.2s",
 };

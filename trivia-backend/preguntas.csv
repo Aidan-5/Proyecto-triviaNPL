@@ -1,0 +1,201 @@
+id,pregunta,respuesta_correcta,opcion1,opcion2,opcion3,opcion4,categoria
+1,¿Quién es el protagonista de “Piratas del Caribe”?,Jack Sparrow,Jack Sparrow,Will Turner,Barbossa,Davy Jones,Entretenimiento
+2,¿Qué personaje vive en una piña bajo el mar?,Bob Esponja,Bob Esponja,Patricio,Calamardo,Arenita,Entretenimiento
+3,¿Qué saga incluye varitas mágicas?,Harry Potter,Harry Potter,Star Wars,Narnia,Divergente,Entretenimiento
+4,¿Quién canta “Shape of You”?,Ed Sheeran,Ed Sheeran,Shawn Mendes,Justin Bieber,The Weeknd,Entretenimiento
+5,¿Qué superhéroe es de Marvel?,Iron Man,Iron Man,Batman,Flash,Superman,Entretenimiento
+6,¿Cuál es el villano principal en Star Wars?,Darth Vader,Darth Vader,Kylo Ren,Palpatine,Maul,Entretenimiento
+7,¿Qué serie tiene dragones?,Game of Thrones,Game of Thrones,The Office,Friends,Sherlock,Entretenimiento
+8,¿Quién es el ratón más famoso del mundo?,Mickey Mouse,Mickey Mouse,Jerry,Speedy González,Fievel,Entretenimiento
+9,¿Qué película tiene el personaje “Woody”?,Toy Story,Toy Story,Cars,Shrek,Frozen,Entretenimiento
+10,¿Quién interpreta a Wolverine?,Hugh Jackman,Hugh Jackman,Chris Evans,Tom Holland,Ryan Reynolds,Entretenimiento
+11,¿Cuál es la familia amarilla famosa?,Los Simpson,Los Simpson,Los Padrinos Mágicos,Los Rugrats,Bob's Burgers,Entretenimiento
+12,¿Quién canta “Bad Guy”?,Billie Eilish,Billie Eilish,Ariana Grande,Dua Lipa,Rihanna,Entretenimiento
+13,¿Qué película dice “Yo soy tu padre”?,Star Wars,Star Wars,Matrix,Avatar,Terminator,Entretenimiento
+14,¿Qué princesa tiene un castillo de hielo?,Elsa,Elsa,Bella,Ariel,Rapunzel,Entretenimiento
+15,¿Quién es el protagonista de Iron Man?,Tony Stark,Tony Stark,Peter Parker,Bruce Wayne,Steven Strange,Entretenimiento
+16,¿Qué película tiene el personaje “Blue”?,Río,Río,Kung Fu Panda,Madagascar,Shrek,Entretenimiento
+17,¿Quién es el villano de “Avengers: Endgame”?,Thanos,Thanos,Loki,Ultron,Kang,Entretenimiento
+18,¿Qué artista cantó “Thriller”?,Michael Jackson,Michael Jackson,Bruno Mars,The Weeknd,Prince,Entretenimiento
+19,¿Qué película popular tiene dinosaurios?,Jurassic Park,Jurassic Park,Tarzán,Mulan,Hércules,Entretenimiento
+20,¿Qué serie tiene un laboratorio de niños genios?,Dexter’s Laboratory,Dexter’s Laboratory,Jimmy Neutron,Phineas and Ferb,Los Jóvenes Titanes,Entretenimiento
+21,¿Quién es “El Caballero de la Noche”?,Batman,Batman,Superman,Iron Man,Daredevil,Entretenimiento
+22,¿Qué banda cantó “Bohemian Rhapsody”?,Queen,Queen,The Beatles,AC/DC,Coldplay,Entretenimiento
+23,¿Qué película tiene el personaje Stitch?,Lilo & Stitch,Lilo & Stitch,Moana,Up,Enredados,Entretenimiento
+24,¿Quién es el mejor amigo de Harry Potter?,Ron Weasley,Ron Weasley,Draco Malfoy,Hagrid,Neville Longbottom,Entretenimiento
+25,¿Qué videojuego tiene la frase “Victory Royale”?,Fortnite,Fortnite,Free Fire,Call of Duty,Minecraft,Entretenimiento
+26,¿Qué significa CPU?,Unidad Central de Procesamiento,Unidad Central de Procesamiento,Unidad de Potencia Computacional,Centro Principal de Usuarios,Control de Procesos Universales,Tecnología
+27,¿Qué empresa creó el sistema operativo Windows?,Microsoft,Microsoft,Apple,IBM,Google,Tecnología
+28,¿Qué es un algoritmo?,Conjunto de pasos para resolver un problema,Conjunto de pasos para resolver un problema,Un tipo de virus,Un sistema operativo,Un lenguaje de programación,Tecnología
+29,¿Qué significa HTML?,HyperText Markup Language,HyperText Markup Language,HyperTool Machine Logic,HighText Multi Language,Home Tool Modern Language,Tecnología
+30,¿Qué tipo de dispositivo es un router?,Encaminador de redes,Encaminador de redes,Almacenamiento externo,Tarjeta de sonido,Monitor,Tecnología
+31,¿Qué empresa creó Android?,Google,Google,Samsung,Microsoft,Huawei,Tecnología
+32,¿Qué mide la RAM?,Memoria temporal del sistema,Memoria temporal del sistema,Velocidad del procesador,Capacidad gráfica,Espacio del disco,Tecnología
+33,¿Qué significa URL?,Localizador Uniforme de Recursos,Localizador Uniforme de Recursos,Unidad de Recursos Listos,Universal Red Link,Usuario de Red Local,Tecnología
+34,¿Cuál es el lenguaje más usado para inteligencia artificial?,Python,Python,Java,C,SQL,Tecnología
+35,¿Qué es un firewall?,Sistema que filtra el tráfico de red,Sistema que filtra el tráfico de red,Un programa de diseño,Un tipo de robot,Un virus protector,Tecnología
+36,¿Qué unidad mide la velocidad del procesador?,GHz,GHz,Mbps,kW,RPM,Tecnología
+37,¿Qué inventó Tim Berners-Lee?,La World Wide Web,La World Wide Web,El correo electrónico,Google,Windows,Tecnología
+38,¿Qué significa GPU?,Unidad de Procesamiento Gráfico,Unidad de Procesamiento Gráfico,Generador de Potencia Útil,Grupo de Procesos Universales,Gadget Profesional Único,Tecnología
+39,¿Qué es la nube (cloud)?,Servicio de almacenamiento remoto,Servicio de almacenamiento remoto,Una memoria USB avanzada,Un tipo de firewall,Un antivirus,Tecnología
+40,¿Qué tecnología permite pagos sin contacto?,NFC,NFC,HDMI,BIOS,VGA,Tecnología
+41,¿Qué significa BIOS?,Sistema Básico de Entrada/Salida,Sistema Básico de Entrada/Salida,Base Interna de Software,Black Input Output System,Binary Search Office,Tecnología
+42,¿Qué empresa creó el iPhone?,Apple,Apple,Nokia,Samsung,Sony,Tecnología
+43,¿Qué es el phishing?,Robo de datos mediante engaño,Robo de datos mediante engaño,Navegación segura,Instalación de redes,Copia de archivos,Tecnología
+44,¿Qué es un SSD?,Disco de estado sólido,Disco de estado sólido,Señal de datos serial,Sistema de sonido digital,Software de seguridad,Tecnología
+45,¿Qué protocolo se usa para navegar en internet?,HTTP,HTTP,FTP,DNS,SMTP,Tecnología
+46,¿Cuál es el navegador creado por Google?,Chrome,Chrome,Edge,Firefox,Safari,Tecnología
+47,¿Qué es un QR?,Código de respuesta rápida,Código de respuesta rápida,Cuadro rígido,Query Realtime,Quick Radio,Tecnología
+48,¿Qué es un malware?,Software malicioso,Software malicioso,Aplicación educativa,Herrera de diseño,Sistema operativo,Tecnología
+49,¿Qué tipo de red es el Bluetooth?,Red personal inalámbrica,Red personal inalámbrica,Red local fija,Red satelital,Red de fibra óptica,Tecnología
+50,¿Cuál es la empresa creadora de ChatGPT?,OpenAI,OpenAI,Meta,Amazon,Netflix,Tecnología
+51,¿Cuál es el planeta más grande del sistema solar?,Júpiter,Júpiter,Saturno,Neptuno,Urano,Ciencia
+52,¿Qué partícula tiene carga negativa?,Electrón,Electrón,Protón,Neutrón,Positrón,Ciencia
+53,¿Cuál es la velocidad de la luz?,300,000 km/s,300,000 km/s,150,000 km/s,1,000 km/s,3,000 km/s,Ciencia
+54,¿Qué gas abunda más en la atmósfera?,Nitrógeno,Nitrógeno,Oxígeno,Argón,CO₂,Ciencia
+55,¿Qué científico propuso la teoría de la relatividad?,Albert Einstein,Albert Einstein,Isaac Newton,Galileo Galilei,Stephen Hawking,Ciencia
+56,¿Cómo se llama la fuerza que nos mantiene en la Tierra?,Gravedad,Gravedad,Inercia,Magnetismo,Fricción,Ciencia
+57,¿Qué órgano bombea la sangre?,Corazón,Corazón,Pulmón,Riñón,Hígado,Ciencia
+58,¿Qué tipo de energía produce el Sol?,Nuclear,Nuclear,Eólica,Química,Geotérmica,Ciencia
+59,¿Cuál es el hueso más largo del cuerpo humano?,Fémur,Fémur,Húmero,Radio,Tibia,Ciencia
+60,¿Qué vitamina se obtiene con el Sol?,Vitamina D,Vitamina D,Vitamina A,Vitamina C,Vitamina E,Ciencia
+61,¿Qué célula transporta oxígeno?,Glóbulo rojo,Glóbulo rojo,Glóbulo blanco,Plaqueta,Neurona,Ciencia
+62,¿Cuál es el metal más liviano?,Litio,Litio,Aluminio,Plata,Sodio,Ciencia
+63,¿Qué animal es el más grande del mundo?,Ballena azul,Ballena azul,Elefante africano,Cachalote,Tiburón blanco,Ciencia
+64,¿Qué planeta es conocido como el “planeta rojo”?,Marte,Marte,Venus,Júpiter,Mercurio,Ciencia
+65,¿Qué estudia la botánica?,Las plantas,Las plantas,Los animales,Las rocas,Los astros,Ciencia
+66,¿Qué unidad mide la energía?,Joule,Joule,Pascal,Watt,Newton,Ciencia
+67,¿Cómo se llama el proceso de las plantas para fabricar su alimento?,Fotosíntesis,Fotosíntesis,Germinación,Polinización,Oxidación,Ciencia
+68,¿Qué gen determina ser hombre?,Y,Y,X,Z,W,Ciencia
+69,¿Qué le da color a los ojos?,Melanina,Melanina,Colágeno,Hemoglobina,Queratina,Ciencia
+70,¿Cómo se llama el cambio de sólido a gas?,Sublimación,Sublimación,Evaporación,Condensación,Fusión,Ciencia
+71,¿Qué es el ADN?,Material genético,Material genético,Hormona,Enzima,Proteína muscular,Ciencia
+72,¿Cuántos cromosomas tiene el humano?,46,46,44,48,50,Ciencia
+73,¿Qué animal pone huevos?,Ornitorrinco,Ornitorrinco,Delfín,Murciélago,Gorila,Ciencia
+74,¿Cuál es el pH del agua pura?,7,7,5,9,11,Ciencia
+75,¿Cuál es el segundo elemento más abundante del universo?,Helio,Helio,Oxígeno,Carbono,Hidrógeno,Ciencia
+76,¿En qué año cayó el Imperio Romano de Occidente?,476 d.C.,476 d.C.,410 d.C.,532 d.C.,650 d.C.,Historia
+77,¿Quién fue el primer emperador romano?,Augusto,Augusto,Nerón,Julio Cesar,Trajano,Historia
+78,¿Qué civilización construyó Machu Picchu?,Los incas,Los incas,Los mayas,Los aztecas,Los chibchas,Historia
+79,¿Dónde se originó la democracia?,Atenas,Atenas,Roma,Esparta,Babilonia,Historia
+80,¿Qué guerra finalizó con la caída del Muro de Berlín?,La Guerra Fría,La Guerra Fría,Primera Guerra Mundial,Segunda Guerra Mundial,Guerra de Vietnam,Historia
+81,¿Quién descubrió América?,Cristóbal Colón,Cristóbal Colón,Vasco da Gama,Hernán Cortés,Marco Polo,Historia
+82,¿En qué país inició la Revolución Industrial?,Reino Unido,Reino Unido,Francia,Alemania,Estados Unidos,Historia
+83,¿Quién fue el creador del Imperio Mongol?,Gengis Kan,Gengis Kan,Kublai Kan,Tamerlán,Atila,Historia
+84,¿En qué año comenzó la Primera Guerra Mundial?,1914,1914,1920,1898,1939,Historia
+85,¿Qué civilización usaba jeroglíficos?,Egipto,Egipto,Babilonia,Cartago,Roma,Historia
+86,¿Quién lideró la independencia de Argentina?,José de San Martín,José de San Martín,Simón Bolívar,O’Higgins,Artigas,Historia
+87,¿Cuál fue la capital del Imperio Bizantino?,Constantinopla,Constantinopla,Alejandría,Roma,Atenas,Historia
+88,¿Qué país lanzó la primera bomba atómica?,Estados Unidos,Estados Unidos,Rusia,Alemania,Japón,Historia
+89,¿Qué evento inició la Segunda Guerra Mundial?,La invasión a Polonia,La invasión a Polonia,El ataque a Pearl Harbor,La Revolución Rusa,La Guerra Civil Española,Historia
+90,¿Quién fue el faraón más famoso de Egipto?,Tutankamón,Tutankamón,Ramsés II,Keops,Akhenatón,Historia
+91,¿Qué cultura construyó Chichén Itzá?,Los mayas,Los mayas,Los aztecas,Los incas,Los mixtecas,Historia
+92,¿Qué barco se hundió en 1912?,Titanic,Titanic,Olympic,Britannic,Queen Mary,Historia
+93,¿Quién escribió la Ilíada?,Homero,Homero,Sófocles,Virgilio,Platón,Historia
+94,¿Qué imperio era conocido como “la Sublime Puerta”?,El Imperio Otomano,El Imperio Otomano,El Sacro Imperio Romano,El Persa,El Macedonio,Historia
+95,¿Qué guerra ocurrió entre 1936 y 1939?,Guerra Civil Española,Guerra Civil Española,Guerra Fría,Guerra del Golfo,Guerra de Crimea,Historia
+96,¿Quién fue el último emperador de México?,Maximiliano de Habsburgo,Maximiliano de Habsburgo,Porfirio Díaz,Iturbide,Benito Juárez,Historia
+97,¿Cuál fue la primera civilización mesopotámica?,Sumerios,Sumerios,Asirios,Babilonios,Hititas,Historia
+98,¿Qué revolución ocurrió en 1789?,La Revolución Francesa,La Revolución Francesa,La Industrial,La Mexicana,La Rusa,Historia
+99,¿Quién pintó la Capilla Sixtina?,Miguel Ángel,Miguel Ángel,Leonardo da Vinci,Rafael,Botticelli,Arte y Cultura
+100,¿Qué país lideró las Cruzadas?,Los reinos cristianos europeos,Los reinos cristianos europeos,El Imperio Bizantino,El Imperio Otomano,Egipto,Historia
+101,¿Quién pintó La Mona Lisa?,Leonardo da Vinci,Leonardo da Vinci,Picasso,Van Gogh,Miguel Ángel,Arte y Cultura
+102,¿Qué cultura construyó las pirámides de Giza?,Egipcia,Egipcia,Maya,Inca,China,Historia
+103,¿Quién escribió “Don Quijote de la Mancha”?,Miguel de Cervantes,Miguel de Cervantes,Shakespeare,Neruda,Borges,Arte y Cultura
+104,¿Qué músico es conocido como el “Rey del Pop”?,Michael Jackson,Michael Jackson,Elvis Presley,Prince,Justin Timberlake,Arte y Cultura
+105,¿Qué instrumento tocaba Mozart?,Piano,Piano,Violín,Flauta,Arpa,Arte y Cultura
+106,¿Cuál es el estilo artístico de Pablo Picasso?,Cubismo,Cubismo,Surrealismo,Barroco,Romanticismo,Arte y Cultura
+107,¿Dónde se originó el tango?,Argentina,Argentina,México,España,Italia,Arte y Cultura
+108,¿Quién pintó “La noche estrellada”?,Vincent van Gogh,Vincent van Gogh,Monet,Goya,Dalí,Arte y Cultura
+109,¿Qué civilización inventó el papel?,China,China,India,Egipto,Grecia,Historia
+110,¿Qué escritor creó “Harry Potter”?,J.K. Rowling,J.K. Rowling,Stephen King,Tolkien,George R.R. Martin,Arte y Cultura
+111,¿Qué país es cuna del anime?,Japón,Japón,Corea,China,EEUU,Arte y Cultura
+112,¿Qué obra pertenece a Shakespeare?,Romeo y Julieta,Romeo y Julieta,El Principito,Crimen y Castigo,Don Juan Tenorio,Arte y Cultura
+113,¿Qué danza es típica de Hawái?,Hula,Hula,Samba,Flamenco,Jarana,Arte y Cultura
+114,¿En qué país se encuentra el Louvre?,Francia,Francia,Italia,España,Bélgica,Arte y Cultura
+115,¿Qué artista pintó el “Guernica”?,Picasso,Picasso,Dalí,Miró,Monet,Arte y Cultura
+116,¿Qué cultura creó los moáis?,Rapa Nui,Rapa Nui,Maya,Egipcia,China,Arte y Cultura
+117,¿Qué idioma tiene más hablantes nativos?,Chino mandarín,Chino mandarín,Inglés,Español,Hindi,Arte y Cultura
+118,¿Qué país es famoso por la ópera de Sídney?,Australia,Australia,Francia,Canadá,Brasil,Arte y Cultura
+119,¿Quién escribió “El Principito”?,Antoine de Saint-Exupéry,Antoine de Saint-Exupéry,Julio Verne,Rimbaud,Borges,Arte y Cultura
+120,¿Qué movimiento pertenece Dalí?,Surrealismo,Surrealismo,Barroco,Neoclasicismo,Cubismo,Arte y Cultura
+121,¿Qué instrumento es de viento?,Flauta,Flauta,Violín,Piano,Batería,Arte y Cultura
+122,¿Qué país originó el flamenco?,España,España,Italia,Venezuela,Grecia,Arte y Cultura
+123,¿Cuál es la obra más famosa de Beethoven?,Novena Sinfonía,Novena Sinfonía,Canon en Re,El Lago de los Cisnes,Carmen,Arte y Cultura
+124,¿Qué cultura creó el Haiku?,Japonesa,Japonesa,India,Árabe,China,Arte y Cultura
+125,¿Qué artista pintó “El grito”?,Edvard Munch,Edvard Munch,Monet,Renoir,Hopper,Arte y Cultura
+126,¿Cuántos jugadores tiene un equipo de fútbol en cancha?,11,11,10,12,9,Deportes
+127,¿Quién ganó más mundiales?,Brasil,Brasil,Alemania,Italia,Francia,Deportes
+128,¿Qué deportista es conocido como “La Pulga”?,Lionel Messi,Lionel Messi,Cristiano Ronaldo,Neymar,Mbappé,Deportes
+129,¿En qué deporte se usa raqueta?,Tenis,Tenis,Boxeo,Fútbol,Rugby,Deportes
+130,¿Quién tiene más medallas olímpicas?,Michael Phelps,Michael Phelps,Usain Bolt,Simone Biles,Mark Spitz,Deportes
+131,¿Dónde se originó el judo?,Japón,Japón,China,Corea,Tailandia,Deportes
+132,¿En qué deporte se usa bate?,Béisbol,Béisbol,Tenis,Golf,Rugby,Deportes
+133,¿Qué país ganó el Mundial 2010?,España,España,Alemania,Brasil,Argentina,Deportes
+134,¿Qué atleta es famoso por ser el más rápido del mundo?,Usain Bolt,Usain Bolt,Tyson Gay,Carl Lewis,Yohan Blake,Deportes
+135,¿Cuál es el deporte más popular del mundo?,Fútbol,Fútbol,Baloncesto,Tenis,Cricket,Deportes
+136,¿Cuántos puntos vale un triple en baloncesto?,3,3,2,1,4,Deportes
+137,¿Quién es “CR7”?,Cristiano Ronaldo,Cristiano Ronaldo,Luka Modrić,Mbappé,Zlatan,Deportes
+138,¿En qué país se originó el taekwondo?,Corea del Sur,Corea del Sur,Corea del Norte,Japón,China,Deportes
+139,¿Qué deporte practica Lewis Hamilton?,Fórmula 1,Fórmula 1,MotoGP,Rally,Karting,Deportes
+140,¿Cuánto dura un partido de fútbol?,90 min,90 min,80 min,100 min,120 min,Deportes
+141,¿Qué animal monta un jinete?,Caballo,Caballo,León,Toro,Camello,Deportes
+142,¿En qué deporte se usan guantes para golpear?,Boxeo,Boxeo,Karate,Esgrima,Judo,Deportes
+143,¿Cuál es el máximo torneo de tenis?,Grand Slam,Grand Slam,Super Bowl,Champions League,Copa América,Deportes
+144,¿Qué país organiza el Super Bowl?,Estados Unidos,Estados Unidos,Inglaterra,México,Canadá,Deportes
+145,¿Quién ganó el Mundial 2022?,Argentina,Argentina,Francia,Brasil,Croacia,Deportes
+146,¿Qué deporte se juega con arco y flechas?,Tiro con arco,Tiro con arco,Halterofilia,Ciclismo,Atletismo,Deportes
+147,¿Qué deporte juega Serena Williams?,Tenis,Tenis,Golf,Natación,Atletismo,Deportes
+148,¿Qué deporte usa puck?,Hockey sobre hielo,Hockey sobre hielo,Béisbol,Cricket,Ping pong,Deportes
+149,¿Qué país creó el rugby?,Inglaterra,Inglaterra,Francia,Australia,Sudáfrica,Deportes
+150,¿Qué deporte incluye clavados?,Natación,Natación,Atletismo,Boxeo,Gimnasia,Deportes
+151,¿Cómo se llama el polígono de 5 lados?,Pentágono,Pentágono,Hexágono,Heptágono,Octágono,Matemáticas
+152,¿Cuál es el valor aproximado de Pi?,3.1416,3.1416,3.1614,2.1416,3.1214,Matemáticas
+153,¿Qué nombre recibe el resultado de una suma?,Total o Suma,Total o Suma,Producto,Cociente,Diferencia,Matemáticas
+154,¿Cuántos grados tiene un ángulo recto?,90°,90°,180°,45°,360°,Matemáticas
+155,¿Cómo se llama el lado más largo de un triángulo rectángulo?,Hipotenusa,Hipotenusa,Cateto mayor,Radio,Apotema,Matemáticas
+156,¿Quién es considerado el "Padre de la Geometría"?,Euclides,Euclides,Pitágoras,Newton,Arquímedes,Matemáticas
+157,¿Cuál es la raíz cuadrada de 144?,12,12,14,16,11,Matemáticas
+158,¿Cómo se llama un ángulo de más de 90° pero menos de 180°?,Obtuso,Obtuso,Agudo,Llano,Cóncavo,Matemáticas
+159,¿Qué número romano representa el 50?,L,L,C,D,V,Matemáticas
+160,¿Cuál es el único número primo que es par?,2,2,4,0,6,Matemáticas
+161,¿Cómo se llama el número superior en una fracción?,Numerador,Numerador,Denominador,Divisor,Factor,Matemáticas
+162,¿A qué es igual un número elevado a la potencia 0?,1,1,0,Al mismo número,Infinito,Matemáticas
+163,¿Cuántos segundos tiene una hora?,3600,3600,600,1200,36000,Matemáticas
+164,¿Cómo se llama el sistema numérico basado en 0 y 1?,Binario,Binario,Decimal,Hexadecimal,Octal,Matemáticas
+165,¿Qué rama de las matemáticas estudia los triángulos?,Trigonometría,Trigonometría,Álgebra,Aritmética,Cálculo,Matemáticas
+166,¿Cuál es el resultado de 7×8?,56,56,54,64,48,Matemáticas
+167,¿Cómo se llama la línea que toca un círculo en un solo punto?,Tangente,Tangente,Secante,Cuerda,Diámetro,Matemáticas
+168,¿Cuántos grados suman los ángulos internos de un triángulo?,180°,180°,360°,90°,270°,Matemáticas
+169,¿Qué matemático enunció la ley de la gravitación universal?,Isaac Newton,Isaac Newton,René Descartes,Blaise Pascal,Carl Gauss,Matemáticas
+170,¿Cómo se llama un polígono de 10 lados?,Decágono,Decágono,Dodecágono,Eneágono,Isógono,Matemáticas
+171,¿Qué número no tiene representación en números romanos?,El cero,El cero,El millón,El cinco,El cien,Matemáticas
+172,¿Cómo se llama el punto donde se cortan dos líneas?,Intersección,Intersección,Vértice,Nodo,Origen,Matemáticas
+173,¿Cuál es el valor de la constante de Euler (e) aprox?,2.718,2.718,3.141,1.618,577,Matemáticas
+174,¿Qué ciencia utiliza las matemáticas para estudiar los astros?,Astronomía,Astronomía,Astrología,Geología,Biología,Ciencia
+175,¿Cómo se llama el resultado de una multiplicación?,Producto,Producto,Residuo,Diferencia,Sumando,Matemáticas
+176,¿Cuál es la unidad de medida de la fuerza en el SI?,Newton,Newton,Joule,Watt,Pascal,Física
+177,¿A qué velocidad viaja la luz aproximadamente?,300,000 km/s,300,000 km/s,300,000 km/h,150,000 km/s,1,000,000 km/s,Física
+178,¿Quién formuló la teoría de la Relatividad General?,Albert Einstein,Albert Einstein,Isaac Newton,Niels Bohr,Stephen Hawking,Física
+179,¿Qué partícula subatómica tiene carga negativa?,Electrón,Electrón,Protón,Neutrón,Fotón,Física
+180,¿Cuál es la ley que dice que la energía no se crea ni se destruye?,Conservación de la energía,Conservación de la energía,Ley de Ohm,Ley de Gravedad,Ley de Inercia,Física
+181,¿Qué instrumento se usa para medir la presión atmosférica?,Barómetro,Barómetro,Termómetro,Higrómetro,Voltímetro,Física
+182,¿Cómo se llama el cambio de estado de gas a líquido?,Condensación,Condensación,Evaporación,Sublimación,Solidificación,Física
+183,¿Quién descubrió la ley de la gravitación universal?,Isaac Newton,Isaac Newton,Galileo Galilei,Johannes Kepler,Marie Curie,Física
+184,¿Cuál es la unidad de medida de la resistencia eléctrica?,Ohmio,Ohmio,Voltio,Amperio,Vatio,Física
+185,¿Qué tipo de lente dispersa los rayos de luz?,Divergente,Divergente,Convergente,Cóncava,Biconvexa,Física
+186,¿En qué unidad se mide la frecuencia de una onda?,Hertz,Hertz,Decibelios,Metros,Kelvin,Física
+187,¿Qué fuerza mantiene a los planetas en órbita?,Gravedad,Gravedad,Electromagnetismo,Fricción,Fuerza Nuclear,Física
+188,¿Cuál es el cero absoluto en la escala Celsius?,-273.15 °C,-273.15 °C,0 °C,-100 °C,-459.67 °C,Física
+189,¿Qué científico propuso el modelo atómico de niveles de energía?,Niels Bohr,Niels Bohr,Ernest Rutherford,John Dalton,J.J. Thomson,Física
+190,¿Cómo se llama la resistencia de un objeto a cambiar su movimiento?,Inercia,Inercia,Aceleración,Momentum,Rozamiento,Física
+191,¿Qué color de la luz visible tiene la mayor longitud de onda?,Rojo,Rojo,Azul,Violeta,Verde,Física
+192,¿Cuál es la principal fuente de energía de la Tierra?,El Sol,El Sol,El Núcleo terrestre,El Viento,La Luna,Física
+193,¿Qué propiedad de la materia se mide en kilogramos?,Masa,Masa,Peso,Volumen,Densidad,Física
+194,¿Qué descubrieron Marie y Pierre Curie?,Radiactividad,Radiactividad,Rayos X,Electromagnetismo,El Neutrón,Física
+195,¿Cómo se llama el sonido con frecuencia superior a la audición humana?,Ultrasonido,Ultrasonido,Infrasonido,Supersónico,Eco,Física
+196,¿Cuál es la fórmula de la segunda ley de Newton?,F=m⋅a,F=m⋅a,E=m⋅c2,V=I⋅R,P=m⋅v,Física
+197,¿Qué fenómeno ocurre cuando la luz cambia de dirección al pasar de un medio a otro?,Refracción,Refracción,Reflexión,Difracción,Dispersión,Física
+198,¿Quién es el autor de la frase "EUREKA"?,Arquímedes,Arquímedes,Pitágoras,Copérnico,Aristóteles,Física
+199,¿Qué partícula es la mediadora de la fuerza electromagnética?,Fotón,Fotón,Gluón,Bosón,Gravitón,Física
+200,¿Cómo se llama el proceso de unión de dos núcleos atómicos ligeros?,Fusión nuclear,Fusión nuclear,Fisión nuclear,Decaimiento,Ionización,Física
